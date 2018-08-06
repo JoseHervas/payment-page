@@ -2,9 +2,9 @@ const path = require( 'path' )
 const webpack = require( 'webpack' )
 
 module.exports = {
-    entry: './client/index.js',
+    entry: './src/index.js',
     output: {
-        path: path.join( __dirname, 'client' ),
+        path: path.join( __dirname, 'public' ),
         filename: 'bundle.js'
     },
     module: {
@@ -17,8 +17,9 @@ module.exports = {
             }
         },
         {
-            test: /\.css$/,
-            loader: 'style-loader!css-loader'
-        } ]
+            test: /\.(s*)css$/,
+            use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        }
+        ]
     }
 }
