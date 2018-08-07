@@ -5,14 +5,12 @@
   "dependencies": {
     "antd": "^3.8.0",
     "autobind-decorator": "^2.1.0",
-    "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "mongoose": "5.2.7",
-    "nodemon": "^1.18.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "mongoose": "5.2.7"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -26,7 +24,7 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "npm run webpack && nodemon --exec babel-node -- bin/www",
+    "start": "npm run webpack && nodemon --exec babel-node -- server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
