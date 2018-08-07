@@ -54,7 +54,7 @@ app.post( '/subscribe', async ( req, res ) => {
           currency: 'usd',
           interval: 'month',
           product: {
-            name: 'Ruby Elite'
+            name: 'An example (monthly) subscription'
           }
         });
 
