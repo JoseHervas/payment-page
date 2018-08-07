@@ -1,7 +1,9 @@
 const express = require( 'express' )
+const helmet = require( 'helmet' )
 const stripe = require( 'stripe' )( 'sk_test_TwTTlid3GeOG6YPydOjARw4I' )
 
 const app = express()
+app.use( helmet() )
 app.use( express.static( 'public' ) )
 app.use( require( 'body-parser' ).text() )
 
@@ -49,19 +51,19 @@ app.post( '/subscribe', async ( req, res ) => {
             email: 'juan.perez@ejemplo.com'
         } )
 
-        const plan = await stripe.plans.create({
-          amount: 2000,
-          currency: 'usd',
-          interval: 'month',
-          product: {
-            name: 'An example (monthly) subscription'
-          }
-        });
+        const plan = await stripe.plans.create( {
+            amount: 2000,
+            currency: 'usd',
+            interval: 'month',
+            product: {
+                name: 'An example (monthly) subscription'
+            }
+        } )
 
-        const { status }  = await stripe.subscriptions.create({
-          customer: customer.id,
-          plan: plan.id
-        });
+        const { status } = await stripe.subscriptions.create( {
+            customer: customer.id,
+            plan: plan.id
+        } )
 
         res.json( { status } )
     } catch ( err ) {
