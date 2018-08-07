@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.8.0",
     "autobind-decorator": "^2.1.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongoose": "5.2.7",
     "nodemon": "^1.18.3",
@@ -12,7 +13,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4",
-    "react-stripe-elements": "^2.0.1"
+    "react-stripe-elements": "^2.0.1",
+    "stripe": "^6.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
