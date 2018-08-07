@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { CardElement, injectStripe, Elements } from 'react-stripe-elements'
-import { Checkbox } from 'antd';
+import { Checkbox } from 'antd'
 
 class CheckoutForm extends Component {
     constructor( props ) {
@@ -11,17 +11,24 @@ class CheckoutForm extends Component {
 
     async submit( ev ) {
         const { token } = await this.props.stripe.createToken( { name: 'Name' } )
-        const response = await fetch( '/charge', {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain' },
-            body: token.id
-        } )
+
+        let response = null
+
+        if ( document.querySelector( '.remember input' ).checked ) {
+            response = await fetch( '/chargeAndSubscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
+                body: token.id
+            } )
+        } else {
+            response = await fetch( '/charge', {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
+                body: token.id
+            } )
+        }
 
         if ( response.ok ) this.setState( { complete: true } )
-    }
-
-    onCheck(name) {
-      console.log(name);
     }
 
     render() {
@@ -38,8 +45,8 @@ class CheckoutForm extends Component {
                     <h4 id="quantity">20€</h4>
                 </div>
                 <div id="extra-actions">
-                  <Checkbox key="remember" className="remember" onChange={() => {this.onCheck("remember")}}>Remember me</Checkbox>
-                  <Checkbox key="subscribe" className="subscribe" onChange={() => {this.onCheck("subscribe")}}>Subscribe MONTHLY</Checkbox>
+                    <Checkbox key="remember" className="remember">Remember me</Checkbox>
+                    <Checkbox key="subscribe" className="subscribe">Subscribe MONTHLY</Checkbox>
                 </div>
                 <button onClick={this.submit}>Send</button>
             </div>

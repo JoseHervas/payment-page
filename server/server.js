@@ -16,9 +16,32 @@ app.post( '/charge', async ( req, res ) => {
 
         res.json( { status } )
     } catch ( err ) {
+        console.log( err )
         res.status( 500 ).end()
     }
 } )
+
+app.post( '/chargeAndSubscribe', async ( req, res ) => {
+    try {
+        const customer = await stripe.customers.create( {
+            source: req.body,
+            email: 'juan.perez@ejemplo.com'
+        } )
+
+        const { status } = await stripe.charges.create( {
+            amount: 2000,
+            currency: 'usd',
+            description: 'An example charge',
+            customer: customer.id
+        } )
+
+        res.json( { status } )
+    } catch ( err ) {
+        console.log( err )
+        res.status( 500 ).end()
+    }
+} )
+
 
 const port = 8000
 app.listen( port, () => {
