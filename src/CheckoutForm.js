@@ -15,18 +15,18 @@ class CheckoutForm extends Component {
         let response = null
 
         if ( document.querySelector( '.remember input' ).checked ) {
-            if (document.querySelector( '.subscribe input' ).checked){
-              response = await fetch( '/subscribe', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'text/plain' },
-                  body: token.id
-              } )
+            if ( document.querySelector( '.subscribe input' ).checked ) {
+                response = await fetch( '/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: token.id
+                } )
             } else {
-              response = await fetch( '/chargeAndRemember', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'text/plain' },
-                  body: token.id
-              } )
+                response = await fetch( '/chargeAndRemember', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: token.id
+                } )
             }
         } else {
             response = await fetch( '/charge', {
@@ -39,8 +39,10 @@ class CheckoutForm extends Component {
         if ( response.ok ) this.setState( { complete: true } )
     }
 
-    onSubscribe () {
-      document.querySelector( '.remember input' ).checked = "checked"
+    onSubscribe() {
+        if ( document.querySelector( '.subscribe input' ).checked ) {
+            document.querySelector( '.remember input' ).checked = 'checked'
+        }
     }
 
     render() {
