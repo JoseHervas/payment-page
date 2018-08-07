@@ -28,6 +28,6 @@
   "scripts": {
     "webpack": "webpack",
     "start": "npm run webpack && nodemon --exec babel-node -- server/server.js",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
   }
 }
