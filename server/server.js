@@ -21,7 +21,7 @@ app.post( '/charge', async ( req, res ) => {
     }
 } )
 
-app.post( '/chargeAndSubscribe', async ( req, res ) => {
+app.post( '/chargeAndRemember', async ( req, res ) => {
     try {
         const customer = await stripe.customers.create( {
             source: req.body,
@@ -34,6 +34,34 @@ app.post( '/chargeAndSubscribe', async ( req, res ) => {
             description: 'An example charge',
             customer: customer.id
         } )
+
+        res.json( { status } )
+    } catch ( err ) {
+        console.log( err )
+        res.status( 500 ).end()
+    }
+} )
+
+app.post( '/subscribe', async ( req, res ) => {
+    try {
+        const customer = await stripe.customers.create( {
+            source: req.body,
+            email: 'juan.perez@ejemplo.com'
+        } )
+
+        const plan = await stripe.plans.create({
+          amount: 2000,
+          currency: 'usd',
+          interval: 'month',
+          product: {
+            name: 'Ruby Elite'
+          }
+        });
+
+        const { status }  = await stripe.subscriptions.create({
+          customer: customer.id,
+          plan: plan.id
+        });
 
         res.json( { status } )
     } catch ( err ) {
