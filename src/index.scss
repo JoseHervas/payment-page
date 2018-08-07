@@ -67,10 +67,9 @@ button:hover {
   box-shadow: 0 7px 14px rgba(50, 50, 93, .10), 0 3px 6px rgba(0, 0, 0, .08);
 }
 
-input,
+input[type=text],input[type=email],
 .StripeElement {
   display: block;
-  margin: 0;
   width: 500px;
   padding: 10px 14px;
   font-size: 1em;
@@ -118,7 +117,7 @@ input:focus,
   transform: translateY(30%);
 }
 
-#billed{
+#billed, #extra-actions{
   text-align: initial;
   width: 500px;
   margin: 25px auto;
@@ -128,7 +127,7 @@ input:focus,
   }
 }
 
-#quantity {
+#quantity, .subscribe {
   float: right;
   margin: 0;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { CardElement, injectStripe, Elements } from 'react-stripe-elements'
+import { Checkbox } from 'antd';
 
 class CheckoutForm extends Component {
     constructor( props ) {
@@ -16,20 +17,29 @@ class CheckoutForm extends Component {
             body: token.id
         } )
 
-        if ( response.ok ) console.log( 'Purchase Complete!' )
+        if ( response.ok ) this.setState( { complete: true } )
+    }
+
+    onCheck(name) {
+      console.log(name);
     }
 
     render() {
-        if ( this.state.complete ) return <h1>Purchase Complete</h1>
+        if ( this.state.complete ) return <h1>Purchase Completed!</h1>
 
         return (
             <div className="checkout">
+                <h1>Confirm Payment</h1>
                 <input name="name" type="text" placeholder="Name" required />
                 <input name="email" type="email" placeholder="Email" required />
                 <CardElement />
                 <div id="billed">
-                  <h4>Total billed:</h4>
-                  <h4 id="quantity">20€</h4>
+                    <h4>Total billed:</h4>
+                    <h4 id="quantity">20€</h4>
+                </div>
+                <div id="extra-actions">
+                  <Checkbox key="remember" className="remember" onChange={() => {this.onCheck("remember")}}>Remember me</Checkbox>
+                  <Checkbox key="subscribe" className="subscribe" onChange={() => {this.onCheck("subscribe")}}>Subscribe MONTHLY</Checkbox>
                 </div>
                 <button onClick={this.submit}>Send</button>
             </div>
