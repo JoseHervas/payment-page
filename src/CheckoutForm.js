@@ -10,11 +10,16 @@ class CheckoutForm extends Component {
     }
 
     async submit( ev ) {
+
+        //The token is the starting point always
         const { token } = await this.props.stripe.createToken( { name: 'Name' } )
 
+        //This is the key variable of the method
         let response = null
 
+        //Did the user check the REMEMBER button?
         if ( document.querySelector( '.remember input' ).checked ) {
+            //If so, did the user check also the SUBSCRIBE button?
             if ( document.querySelector( '.subscribe input' ).checked ) {
                 response = await fetch( '/subscribe', {
                     method: 'POST',
@@ -22,6 +27,7 @@ class CheckoutForm extends Component {
                     body: token.id
                 } )
             } else {
+                //The user wants a ONLY ONCE payment, but he/she wants to be remembered
                 response = await fetch( '/chargeAndRemember', {
                     method: 'POST',
                     headers: { 'Content-Type': 'text/plain' },
@@ -29,6 +35,7 @@ class CheckoutForm extends Component {
                 } )
             }
         } else {
+            //The user wants a ONLY ONCE payments and DO NOT WANT to be remembered
             response = await fetch( '/charge', {
                 method: 'POST',
                 headers: { 'Content-Type': 'text/plain' },
