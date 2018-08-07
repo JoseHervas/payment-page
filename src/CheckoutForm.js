@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CardElement, injectStripe } from 'react-stripe-elements'
+import { CardElement, injectStripe, Elements } from 'react-stripe-elements'
 
 class CheckoutForm extends Component {
     constructor( props ) {
@@ -24,8 +24,13 @@ class CheckoutForm extends Component {
 
         return (
             <div className="checkout">
-                <p>Would you like to complete the purchase?</p>
+                <input name="name" type="text" placeholder="Name" required />
+                <input name="email" type="email" placeholder="Email" required />
                 <CardElement />
+                <div id="billed">
+                  <h4>Total billed:</h4>
+                  <h4 id="quantity">20€</h4>
+                </div>
                 <button onClick={this.submit}>Send</button>
             </div>
         )

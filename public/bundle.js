@@ -1337,26 +1337,27 @@ exports.default = shallowEqual;
 
 
 class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-  render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_stripe_elements__["StripeProvider"],
-      { apiKey: 'pk_test_LwL4RUtinpP3PXzYirX2jNfR' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'example' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h1',
-          null,
-          'React Stripe Elements Example'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_stripe_elements__["Elements"],
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CheckoutForm_js__["a" /* default */], null)
-        )
-      )
-    );
-  }
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_1_react_stripe_elements__["StripeProvider"],
+            { apiKey: 'pk_test_LwL4RUtinpP3PXzYirX2jNfR' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'example' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'https://www.donempleo.com/img/logos/95514p.png', id: 'logo' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h1',
+                    null,
+                    'Confirm Payment'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_1_react_stripe_elements__["Elements"],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CheckoutForm_js__["a" /* default */], null)
+                )
+            )
+        );
+    }
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (App);
@@ -1478,12 +1479,23 @@ class CheckoutForm extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'checkout' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'p',
-                null,
-                'Would you like to complete the purchase?'
-            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'name', type: 'text', placeholder: 'Name', required: true }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'email', type: 'email', placeholder: 'Email', required: true }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_stripe_elements__["CardElement"], null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { id: 'billed' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h4',
+                    null,
+                    'Total billed:'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h4',
+                    { id: 'quantity' },
+                    '20\u20AC'
+                )
+            ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'button',
                 { onClick: this.submit },
@@ -1524,7 +1536,7 @@ exports = module.exports = __webpack_require__(24)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box; }\n\nbody,\nhtml {\n  background-color: #f6f9fc;\n  font-size: 18px;\n  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }\n\nh1 {\n  color: #32325d;\n  font-weight: 400;\n  line-height: 50px;\n  font-size: 40px;\n  margin: 20px 0;\n  padding: 0; }\n\n.Checkout {\n  margin: 0 auto;\n  max-width: 800px;\n  box-sizing: border-box;\n  padding: 0 5px; }\n\nlabel {\n  color: #6b7c93;\n  font-weight: 300;\n  letter-spacing: 0.025em; }\n\nbutton {\n  white-space: nowrap;\n  border: 0;\n  outline: 0;\n  display: inline-block;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 14px;\n  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);\n  color: #fff;\n  border-radius: 4px;\n  font-size: 15px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.025em;\n  background-color: #6772e5;\n  text-decoration: none;\n  -webkit-transition: all 150ms ease;\n  transition: all 150ms ease;\n  margin-top: 10px; }\n\nform {\n  margin-bottom: 40px;\n  padding-bottom: 40px;\n  border-bottom: 3px solid #e6ebf1; }\n\nbutton:hover {\n  color: #fff;\n  cursor: pointer;\n  background-color: #7795f8;\n  transform: translateY(-1px);\n  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08); }\n\ninput,\n.StripeElement {\n  display: block;\n  margin: 10px 0 20px 0;\n  max-width: 500px;\n  padding: 10px 14px;\n  font-size: 1em;\n  font-family: 'Source Code Pro', monospace;\n  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;\n  border: 0;\n  outline: 0;\n  border-radius: 4px;\n  background: white; }\n\ninput::placeholder {\n  color: #aab7c4; }\n\ninput:focus,\n.StripeElement--focus {\n  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;\n  -webkit-transition: all 150ms ease;\n  transition: all 150ms ease; }\n\n.StripeElement.IdealBankElement,\n.StripeElement.PaymentRequestButton {\n  padding: 0; }\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box; }\n\nbody,\nhtml {\n  background-color: #f6f9fc;\n  font-size: 18px;\n  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }\n\nh1 {\n  color: #32325d;\n  font-weight: 400;\n  line-height: 50px;\n  font-size: 40px;\n  margin: 20px 0;\n  padding: 0; }\n\n.Checkout {\n  margin: 0 auto;\n  max-width: 800px;\n  box-sizing: border-box;\n  padding: 0 5px; }\n\nlabel {\n  color: #6b7c93;\n  font-weight: 300;\n  letter-spacing: 0.025em; }\n\nbutton {\n  white-space: nowrap;\n  border: 0;\n  outline: 0;\n  display: inline-block;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 14px;\n  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);\n  color: #fff;\n  border-radius: 4px;\n  font-size: 15px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.025em;\n  background-color: #6772e5;\n  text-decoration: none;\n  -webkit-transition: all 150ms ease;\n  transition: all 150ms ease;\n  margin-top: 10px; }\n\nform {\n  margin-bottom: 40px;\n  padding-bottom: 40px;\n  border-bottom: 3px solid #e6ebf1; }\n\nbutton:hover {\n  color: #fff;\n  cursor: pointer;\n  background-color: #7795f8;\n  transform: translateY(-1px);\n  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08); }\n\ninput,\n.StripeElement {\n  display: block;\n  margin: 0;\n  width: 500px;\n  padding: 10px 14px;\n  font-size: 1em;\n  font-family: 'Source Code Pro', monospace;\n  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;\n  border: 0;\n  outline: 0;\n  border-radius: 0px;\n  background: white; }\n\n.StripeElement {\n  margin: 20px auto; }\n\ninput {\n  margin: 0 auto; }\n\ninput::placeholder {\n  color: #aab7c4; }\n\ninput:focus,\n.StripeElement--focus {\n  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;\n  -webkit-transition: all 150ms ease;\n  transition: all 150ms ease; }\n\n.StripeElement.IdealBankElement,\n.StripeElement.PaymentRequestButton {\n  padding: 0; }\n\n#logo, button {\n  width: 500px;\n  margin-bottom: 20px; }\n\n#root {\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(30%); }\n\n#billed {\n  text-align: initial;\n  width: 500px;\n  margin: 25px auto; }\n  #billed h4 {\n    display: inline; }\n\n#quantity {\n  float: right;\n  margin: 0; }\n", ""]);
 
 // exports
 

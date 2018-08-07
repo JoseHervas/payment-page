@@ -70,16 +70,24 @@ button:hover {
 input,
 .StripeElement {
   display: block;
-  margin: 10px 0 20px 0;
-  max-width: 500px;
+  margin: 0;
+  width: 500px;
   padding: 10px 14px;
   font-size: 1em;
   font-family: 'Source Code Pro', monospace;
   box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
   border: 0;
   outline: 0;
-  border-radius: 4px;
+  border-radius: 0px;
   background: white;
+}
+
+.StripeElement {
+  margin: 20px auto;
+}
+
+input{
+  margin: 0 auto;
 }
 
 input::placeholder {
@@ -96,4 +104,31 @@ input:focus,
 .StripeElement.IdealBankElement,
 .StripeElement.PaymentRequestButton {
   padding: 0;
+}
+
+#logo, button{
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+#root {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(30%);
+}
+
+#billed{
+  text-align: initial;
+  width: 500px;
+  margin: 25px auto;
+
+  h4 {
+    display: inline;
+  }
+}
+
+#quantity {
+  float: right;
+  margin: 0;
 }
